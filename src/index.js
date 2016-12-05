@@ -7,7 +7,7 @@ import getMuiTheme from "material-ui/styles/getMuiTheme";
 import axios from "axios";
 
 import Url from "./components/url";
-import Methods from "./components/methods";
+import Methods from "./components/dropdown";
 import Button from "./components/button";
 import Output from "./components/output";
 
@@ -40,6 +40,7 @@ class App extends Component {
           <Button doRequest={() =>this.doRequest()} />
           <Url onUrlChange={url => this.onUrlChange(url)} />
           <Output />
+          <Methods />
         </div>
       </MuiThemeProvider>
     );
