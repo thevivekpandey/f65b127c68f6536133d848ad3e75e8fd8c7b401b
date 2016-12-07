@@ -11,26 +11,30 @@ import Methods from "./components/dropdown";
 import Button from "./components/button";
 import Output from "./components/output";
 
+const SERVER_BASE_URL = "http://127.0.0.1:8000/run"
+
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {url: ''};
+    this.state = {url: "", result: "dummy result"};
   }
 
   doRequest() {
     alert(this.state.url);
-    $.ajax({
-      "dataType": "jsonp",
-      "url": this.state.url
-    }).done(function(data) {
-      alert("done");
-    }).fail(function(jqhr) {
-      alert("failed");
-    });
+    var self = this;
+    axios({
+     // url: SERVER_BASE_URL + "?url=" + this.state.url + "&method=get"
+     url: SERVER_BASE_URL + "?url=" + "http://www.google.com" + "&method=get"
+    }).then(function(response) {
+      self.setState({result: response})
+    }).catch(function(error) {
+      console.log(error);
+    })
   }
 
   onUrlChange(url) {
-    this.setState({url});
+    alert('changing url');
+    this.setState({url: url, result: "dummy 2"});
   }
 
   render() {
@@ -39,7 +43,7 @@ class App extends Component {
         <div>
           <Button doRequest={() =>this.doRequest()} />
           <Url onUrlChange={url => this.onUrlChange(url)} />
-          <Output />
+          <Output result={this.state.result}/>
           <Methods />
         </div>
       </MuiThemeProvider>
