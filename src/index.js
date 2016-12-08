@@ -20,7 +20,6 @@ class App extends Component {
   }
 
   doRequest() {
-    alert(this.state.url);
     var self = this;
     axios({
      // url: SERVER_BASE_URL + "?url=" + this.state.url + "&method=get"
@@ -33,7 +32,7 @@ class App extends Component {
   }
 
   onUrlChange(url) {
-    alert('changing url');
+    console.log("Url is changed");
     this.setState({url: url, result: "dummy 2"});
   }
 
