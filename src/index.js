@@ -16,23 +16,20 @@ const SERVER_BASE_URL = "http://127.0.0.1:8000/run"
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {url: "", result: "dummy result"};
+    this.state = {url: "", result: ""};
   }
 
   doRequest() {
     var self = this;
     axios({
-     // url: SERVER_BASE_URL + "?url=" + this.state.url + "&method=get"
-     url: SERVER_BASE_URL + "?url=" + "http://www.google.com" + "&method=get"
+     url: SERVER_BASE_URL + "?url=" + this.state.url + "&method=get"
     }).then(function(response) {
-      self.setState({result: response})
+      self.setState({result: response.data})
     }).catch(function(error) {
-      console.log(error);
     })
   }
 
   onUrlChange(url) {
-    console.log("Url is changed");
     this.setState({url: url, result: "dummy 2"});
   }
 

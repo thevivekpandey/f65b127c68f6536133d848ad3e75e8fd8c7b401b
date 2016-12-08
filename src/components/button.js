@@ -11,7 +11,7 @@ class Button extends Component {
 
   render() {
     return (
-      <FlatButton label="xyz" onClick={this.doRequest.bind(this)}/>
+      <FlatButton label="Submit" onClick={this.doRequest.bind(this)}/>
     );
   }
 }

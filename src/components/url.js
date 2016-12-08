@@ -10,7 +10,7 @@ class Url extends Component {
   render() {
     return (
       <div>
-        <input
+        <input size="50"
           value={this.state.term}
           onChange={event => this.onUrlChange(event.target.value)} />
       </div>
