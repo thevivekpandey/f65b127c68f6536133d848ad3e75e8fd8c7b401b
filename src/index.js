@@ -9,6 +9,7 @@ import axios from "axios";
 import Url from "./components/url";
 import Methods from "./components/dropdown";
 import Button from "./components/button";
+import Headers from "./components/headers";
 import Output from "./components/output";
 
 const SERVER_BASE_URL = "http://127.0.0.1:8000/run"
@@ -37,10 +38,15 @@ class App extends Component {
     return (
       <MuiThemeProvider muiTheme={getMuiTheme()}>
         <div>
-          <Button doRequest={() =>this.doRequest()} />
-          <Url onUrlChange={url => this.onUrlChange(url)} />
-          <Output result={this.state.result}/>
-          <Methods />
+          <div className="first_line">
+            <Url onUrlChange={url => this.onUrlChange(url)} />
+            <Button doRequest={() =>this.doRequest()} />
+          </div>
+          <Headers />
+          <div>
+            <Output result={this.state.result}/>
+            <Methods />
+          </div>
         </div>
       </MuiThemeProvider>
     );
