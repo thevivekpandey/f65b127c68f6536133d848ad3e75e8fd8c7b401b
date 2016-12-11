@@ -4,7 +4,7 @@ class Url extends Component {
   constructor(props) {
     super(props);
     this.onUrlChange = this.onUrlChange.bind(this);
-    this.state = {url: ''}
+    this.state = {url: ""};
   }
 
   render() {

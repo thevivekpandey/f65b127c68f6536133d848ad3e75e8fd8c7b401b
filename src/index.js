@@ -17,13 +17,16 @@ const SERVER_BASE_URL = "http://127.0.0.1:8000/run"
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {url: "", result: ""};
+    this.state = {url: "", result: "", key: "", val: ""};
   }
 
   doRequest() {
-    var self = this;
+    var url = this.state.url;
+    var key = this.state.key;
+    var val = this.state.val;
     axios({
-     url: SERVER_BASE_URL + "?url=" + this.state.url + "&method=get"
+     url: SERVER_BASE_URL + "?url=" + url + "&method=get",
+     headers: {'headerskey': key + "|||" + val}
     }).then(function(response) {
       self.setState({result: response.data})
     }).catch(function(error) {
@@ -31,9 +34,14 @@ class App extends Component {
   }
 
   onUrlChange(url) {
-    this.setState({url: url, result: "dummy 2"});
+    this.setState({url});
   }
-
+  onKeyChange(key) {
+    this.setState({key})
+  }
+  onValChange(val) {
+    this.setState({val})
+  }
   render() {
     return (
       <MuiThemeProvider muiTheme={getMuiTheme()}>
@@ -42,7 +50,8 @@ class App extends Component {
             <Url onUrlChange={url => this.onUrlChange(url)} />
             <Button doRequest={() =>this.doRequest()} />
           </div>
-          <Headers />
+          <Headers onKeyChange={key => this.onKeyChange(key)}
+                   onValChange={val => this.onValChange(val)} />
           <div>
             <Output result={this.state.result}/>
             <Methods />

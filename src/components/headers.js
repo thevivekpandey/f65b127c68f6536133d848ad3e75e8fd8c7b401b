@@ -4,9 +4,14 @@ import TextField from "material-ui/TextField/TextField";
 class Headers extends Component {
   constructor(props) {
     super(props);
+    this.state = {key:"", val:""};
   }
-  doRequest() {
-    this.props.doRequest();
+
+  onKeyChange(event) {
+    this.props.onKeyChange(event.target.value);
+  }
+  onValChange(event) {
+    this.props.onValChange(event.target.value);
   }
 
   render() {
@@ -17,16 +22,12 @@ class Headers extends Component {
     return (
       <div>
         <div>
-          <TextField hintText="key" style={header_style} />
-          <TextField hintText="value" style={header_style} />
-        </div>
-        <div>
-          <TextField hintText="key" style={header_style} />
-          <TextField hintText="value" style={header_style} />
-        </div>
-        <div>
-          <TextField hintText="key" style={header_style} />
-          <TextField hintText="value" style={header_style} />
+          <TextField onChange={event=>this.onKeyChange(event)}
+                     hintText="key" 
+                     style={header_style} />
+          <TextField onChange={event=>this.onValChange(event)}
+                     hintText="value" 
+                     style={header_style} />
         </div>
       </div>
     );
