@@ -24,13 +24,30 @@ class App extends Component {
     var url = this.state.url;
     var key = this.state.key;
     var val = this.state.val;
-    axios({
-     url: SERVER_BASE_URL + "?url=" + url + "&method=get",
-     headers: {'headerskey': key + "|||" + val}
-    }).then(function(response) {
-      self.setState({result: response.data})
-    }).catch(function(error) {
-    })
+    var headers = {'headerskey': key + "|||" + val};
+    console.log("Ok, let me do request");
+    console.log(headers.headerskey);
+    console.log(headers.headerskey);
+    if (headers.headerskey == "|||") {
+      console.log("Will send without extra header");
+      axios({
+       url: SERVER_BASE_URL + "?url=" + url + "&method=get"
+      }).then(function(response) {
+        console.log(response.data);
+        self.setState({result: response.data})
+      }).catch(function(error) {
+      })
+    } else {
+      console.log("Will send with extra header");
+      axios({
+       url: SERVER_BASE_URL + "?url=" + url + "&method=get",
+       headers: headers
+      }).then(function(response) {
+        console.log(response.data);
+        self.setState({result: response.data})
+      }).catch(function(error) {
+      })
+    }
   }
 
   onUrlChange(url) {
