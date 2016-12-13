@@ -11,8 +11,13 @@ class Output extends Component {
   }
 
   render() {
+    var style = {
+      fontSize: 13,
+      workBreak: 'break-all',
+      overflow: 'scroll'
+    };
     return (
-      <div id = "output">
+      <div id = "output" style={style}>
         {this.state.result}
       </div>
     );
