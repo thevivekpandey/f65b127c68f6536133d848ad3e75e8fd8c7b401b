@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import FlatButton from "material-ui/FlatButton";
+import RaisedButton from "material-ui/RaisedButton";
 
 class Button extends Component {
   constructor(props) {
@@ -11,7 +11,7 @@ class Button extends Component {
 
   render() {
     return (
-      <FlatButton label="Submit" onClick={this.doRequest.bind(this)}/>
+      <RaisedButton label="Submit" onClick={this.doRequest.bind(this)}/>
     );
   }
 }

@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import TextField from "material-ui/TextField/TextField";
 
 class Url extends Component {
   constructor(props) {
@@ -8,11 +9,15 @@ class Url extends Component {
   }
 
   render() {
+    const textFieldStyle = {marginTop: -30, width: 800}
     return (
       <div>
-        <input size="50"
-          value={this.state.term}
-          onChange={event => this.onUrlChange(event.target.value)} />
+        <TextField hintText="Enter URL here"
+                   floatingLabelText="Enter URL here"
+                   style={textFieldStyle}
+                   value={this.state.term}
+                   onChange={event=>this.onUrlChange(event.target.value)}
+                  />
       </div>
     );
   }

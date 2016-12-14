@@ -23,6 +23,7 @@ class App extends Component {
   doRequest() {
     var self = this;
     var url = this.state.url;
+    console.log(this.state);
     var key = this.state.key;
     var val = this.state.val;
     var headers = {'headerskey': key + "|||" + val};
@@ -56,7 +57,7 @@ class App extends Component {
   render() {
     return (
       <MuiThemeProvider muiTheme={getMuiTheme()}>
-        <div>
+        <div style={{marginTop: 30}}>
           <div className="first_line">
             <Url onUrlChange={url => this.onUrlChange(url)} />
             <Button doRequest={() =>this.doRequest()} />
@@ -73,4 +74,4 @@ class App extends Component {
   }
 }
 
-ReactDOM.render(<App/>, document.querySelector('.container'));
+ReactDOM.render(<App/>, document.querySelector('.f6_outer'));

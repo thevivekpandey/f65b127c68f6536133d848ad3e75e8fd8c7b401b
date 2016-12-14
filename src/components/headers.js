@@ -16,8 +16,9 @@ class Headers extends Component {
 
   render() {
     var header_style = {
-      width: 300,
-      marginRight: 20
+      width: '40%',
+      marginRight: 40,
+      marginBottom: 20
     };
     return (
       <div>
