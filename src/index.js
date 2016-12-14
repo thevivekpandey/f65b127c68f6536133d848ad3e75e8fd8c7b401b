@@ -12,8 +12,10 @@ import Button from "./components/button";
 import Headers from "./components/headers";
 import Output from "./components/output";
 
-const SERVER_BASE_URL = "http://127.0.0.1:8000/run"
+var injectTapEventPlugin = require("react-tap-event-plugin");
+injectTapEventPlugin();
 
+const SERVER_BASE_URL = "http://127.0.0.1:8000/run"
 class App extends Component {
   constructor(props) {
     super(props);
@@ -59,6 +61,7 @@ class App extends Component {
       <MuiThemeProvider muiTheme={getMuiTheme()}>
         <div style={{marginTop: 30}}>
           <div className="first_line">
+            <Methods />
             <Url onUrlChange={url => this.onUrlChange(url)} />
             <Button doRequest={() =>this.doRequest()} />
           </div>
@@ -66,7 +69,6 @@ class App extends Component {
                    onValChange={val => this.onValChange(val)} />
           <div>
             <Output result={this.state.result}/>
-            <Methods />
           </div>
         </div>
       </MuiThemeProvider>

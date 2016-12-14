@@ -10,8 +10,11 @@ class Button extends Component {
   }
 
   render() {
+    const style = {marginLeft: 30};
     return (
-      <RaisedButton label="Submit" onClick={this.doRequest.bind(this)}/>
+      <RaisedButton label="SEND" 
+                    style={style}
+                    onClick={this.doRequest.bind(this)}/>
     );
   }
 }

@@ -10,8 +10,8 @@ class Methods extends Component {
   render() {
     return (
       <DropDownMenu value={2}>
-        <MenuItem key="1" value={1} primaryText="X"/>
-        <MenuItem key="2" value={2} primaryText="b"/>
+        <MenuItem key="1" value={1} primaryText="GET"/>
+        <MenuItem key="2" value={2} primaryText="POST"/>
       </DropDownMenu>
     );
   }

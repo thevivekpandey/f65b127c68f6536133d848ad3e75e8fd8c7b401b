@@ -9,12 +9,12 @@ class Url extends Component {
   }
 
   render() {
-    const textFieldStyle = {marginTop: -30, width: 800}
+    const style = {marginTop: -30, width: 800};
     return (
       <div>
         <TextField hintText="Enter URL here"
                    floatingLabelText="Enter URL here"
-                   style={textFieldStyle}
+                   style={style}
                    value={this.state.term}
                    onChange={event=>this.onUrlChange(event.target.value)}
                   />

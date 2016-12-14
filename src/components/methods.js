@@ -27,4 +27,3 @@ class Methods extends Component {
   }
 }
 
-export default Methods;
