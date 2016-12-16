@@ -12,9 +12,6 @@ import Button from "./components/button";
 import Headers from "./components/headers";
 import Output from "./components/output";
 
-var injectTapEventPlugin = require("react-tap-event-plugin");
-injectTapEventPlugin();
-
 const SERVER_BASE_URL = "http://127.0.0.1:8000/run"
 class App extends Component {
   constructor(props) {

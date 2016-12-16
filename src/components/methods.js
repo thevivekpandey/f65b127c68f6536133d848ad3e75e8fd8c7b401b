@@ -2,6 +2,9 @@ import React, {Component} from "react";
 import DropDownMenu from "material-ui/DropDownMenu";
 import MenuItem from "material-ui/MenuItem";
 
+var injectTapEventPlugin = require("react-tap-event-plugin");
+injectTapEventPlugin();
+
 class Methods extends Component {
   constructor(props) {
     super(props);
