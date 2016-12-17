@@ -16,26 +16,28 @@ const SERVER_BASE_URL = "http://127.0.0.1:8000/run"
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {url: "", result: "", key: "", val: ""};
+    this.state = {url: "", result: "", key: "", val: "", method: "GET"};
   }
 
   doRequest() {
     var self = this;
     var url = this.state.url;
-    console.log(this.state);
     var key = this.state.key;
     var val = this.state.val;
     var headers = {'headerskey': key + "|||" + val};
+    var method = this.state.method;
+    console.log("see method");
+    console.log(this.state.method);
     if (headers.headerskey == "|||") {
       axios({
-       url: SERVER_BASE_URL + "?url=" + url + "&method=get"
+       url: SERVER_BASE_URL + "?url=" + url + "&method=" + method
       }).then(function(response) {
         self.setState({result: response.data})
       }).catch(function(error) {
       })
     } else {
       axios({
-       url: SERVER_BASE_URL + "?url=" + url + "&method=get",
+       url: SERVER_BASE_URL + "?url=" + url + "&method=" + method,
        headers: headers
       }).then(function(response) {
         self.setState({result: JSON.stringify(response.data)})
@@ -53,12 +55,15 @@ class App extends Component {
   onValChange(val) {
     this.setState({val})
   }
+  onMethodChange(method) {
+    this.setState({method});
+  }
   render() {
     return (
       <MuiThemeProvider muiTheme={getMuiTheme()}>
         <div style={{marginTop: 30}}>
           <div className="first_line">
-            <Methods />
+            <Methods onMethodChange={method => this.onMethodChange(method)}/>
             <Url onUrlChange={url => this.onUrlChange(url)} />
             <Button doRequest={() =>this.doRequest()} />
           </div>
