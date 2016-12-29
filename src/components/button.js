@@ -6,15 +6,14 @@ class Button extends Component {
     super(props);
   }
   doRequest() {
+    console.log("button pressed");
     this.props.doRequest();
   }
 
   render() {
     const style = {marginLeft: 30};
     return (
-      <RaisedButton label="SEND" 
-                    style={style}
-                    onClick={this.doRequest.bind(this)}/>
+      <button className="btn btn-default" onClick={() => this.props.doRequest()}>Send</button>
     );
   }
 }
