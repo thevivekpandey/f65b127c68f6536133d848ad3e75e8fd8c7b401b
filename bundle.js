@@ -40636,15 +40636,22 @@
 	  _createClass(Button, [{
 	    key: "doRequest",
 	    value: function doRequest() {
+	      console.log("button pressed");
 	      this.props.doRequest();
 	    }
 	  }, {
 	    key: "render",
 	    value: function render() {
+	      var _this2 = this;
+
 	      var style = { marginLeft: 30 };
-	      return _react2.default.createElement(_RaisedButton2.default, { label: "SEND",
-	        style: style,
-	        onClick: this.doRequest.bind(this) });
+	      return _react2.default.createElement(
+	        "button",
+	        { className: "btn btn-default", onClick: function onClick() {
+	            return _this2.props.doRequest();
+	          } },
+	        "Send"
+	      );
 	    }
 	  }]);
 
