@@ -28,6 +28,7 @@ class Methods extends Component {
         name="name"
         value= {this.state.method}
         onChange={this.onMethodChange}
+        clearable={false}
       />
     );
   }

@@ -13,7 +13,9 @@ class Button extends Component {
   render() {
     const style = {marginLeft: 30};
     return (
-      <button className="btn btn-default" onClick={() => this.props.doRequest()}>Send</button>
+      <button className="btn btn-default" 
+              style={style}
+              onClick={() => this.props.doRequest()}>Send</button>
     );
   }
 }
