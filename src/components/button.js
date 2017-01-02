@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-import RaisedButton from "material-ui/RaisedButton";
 
 class Button extends Component {
   constructor(props) {
