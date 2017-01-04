@@ -18,13 +18,20 @@ class OutputHeaders extends Component {
       workBreak: 'break-all',
       overflow: 'scroll'
     };
+    var tstyle = {
+      marginLeft: 20,
+      marginTop: 15
+    };
     var keyList = Object.keys(this.state.result).map(function(key) {
       console.log(key);
-      return <tr key={key}><td>{key}</td><td>{state.result[key]}</td></tr>;
+      return <tr key={key}>
+               <th width="15%">{key}</th>
+               <td width="85%">{state.result[key]}</td>
+             </tr>;
     });
     return (
       <div id = "output" style={style}>
-        <table>
+        <table style={tstyle}>
           <tbody>
             {keyList}
           </tbody>
