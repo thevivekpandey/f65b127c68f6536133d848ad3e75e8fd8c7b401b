@@ -13,8 +13,8 @@ import Headers from "./components/headers";
 import Output from "./components/output";
 import OutputTabs from "./components/output_tabs";
 
-//const SERVER_BASE_URL = "http://www.f65b127c68f6536133d848ad3e75e8fd8c7b401b.run/run"
-const SERVER_BASE_URL = "http://127.0.0.1:8000/run"
+const SERVER_BASE_URL = "http://www.f65b127c68f6536133d848ad3e75e8fd8c7b401b.run/run"
+//const SERVER_BASE_URL = "http://127.0.0.1:8000/run"
 class App extends Component {
   constructor(props) {
     super(props);
