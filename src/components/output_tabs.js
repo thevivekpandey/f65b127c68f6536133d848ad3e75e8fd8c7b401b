@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import Output from "./output";
+import OutputBody from "./output_body";
 import OutputHeaders from "./output_headers";
 
 class OutputTabs extends Component {
@@ -21,14 +21,10 @@ class OutputTabs extends Component {
       <Tabs>
         <TabList>
           <Tab> Body </Tab>
-          <Tab> Cookies </Tab>
           <Tab> Headers </Tab>
         </TabList>
         <TabPanel>
-          <Output result={this.state.result.data}/>
-        </TabPanel>
-        <TabPanel>
-        Hi 2
+          <OutputBody result={this.state.result.data}/>
         </TabPanel>
         <TabPanel>
           <OutputHeaders result={this.state.result.headers}/>

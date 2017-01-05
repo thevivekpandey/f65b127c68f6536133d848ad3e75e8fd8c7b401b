@@ -91,11 +91,7 @@
 
 	var _headers2 = _interopRequireDefault(_headers);
 
-	var _output = __webpack_require__(427);
-
-	var _output2 = _interopRequireDefault(_output);
-
-	var _output_tabs = __webpack_require__(428);
+	var _output_tabs = __webpack_require__(427);
 
 	var _output_tabs2 = _interopRequireDefault(_output_tabs);
 
@@ -107,8 +103,8 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var SERVER_BASE_URL = "http://www.f65b127c68f6536133d848ad3e75e8fd8c7b401b.run/run";
-	//const SERVER_BASE_URL = "http://127.0.0.1:8000/run"
+	//const SERVER_BASE_URL = "http://www.f65b127c68f6536133d848ad3e75e8fd8c7b401b.run/run"
+	var SERVER_BASE_URL = "http://127.0.0.1:8000/run";
 
 	var App = function (_Component) {
 	  _inherits(App, _Component);
@@ -40945,68 +40941,6 @@
 /* 427 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(2);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var Output = function (_Component) {
-	  _inherits(Output, _Component);
-
-	  function Output(props) {
-	    _classCallCheck(this, Output);
-
-	    var _this = _possibleConstructorReturn(this, (Output.__proto__ || Object.getPrototypeOf(Output)).call(this, props));
-
-	    _this.state = { result: _this.props.result };
-	    return _this;
-	  }
-
-	  _createClass(Output, [{
-	    key: 'componentWillReceiveProps',
-	    value: function componentWillReceiveProps(nextProps) {
-	      this.setState({ result: nextProps.result });
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var style = {
-	        fontSize: 13,
-	        workBreak: 'break-all',
-	        overflow: 'scroll'
-	      };
-	      return _react2.default.createElement(
-	        'div',
-	        { id: 'output', style: style },
-	        this.state.result
-	      );
-	    }
-	  }]);
-
-	  return Output;
-	}(_react.Component);
-
-	exports.default = Output;
-
-/***/ },
-/* 428 */
-/***/ function(module, exports, __webpack_require__) {
-
 	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
@@ -41019,11 +40953,11 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactTabs = __webpack_require__(429);
+	var _reactTabs = __webpack_require__(428);
 
-	var _output = __webpack_require__(427);
+	var _output_body = __webpack_require__(437);
 
-	var _output2 = _interopRequireDefault(_output);
+	var _output_body2 = _interopRequireDefault(_output_body);
 
 	var _output_headers = __webpack_require__(438);
 
@@ -41074,23 +41008,13 @@
 	          _react2.default.createElement(
 	            _reactTabs.Tab,
 	            null,
-	            " Cookies "
-	          ),
-	          _react2.default.createElement(
-	            _reactTabs.Tab,
-	            null,
 	            " Headers "
 	          )
 	        ),
 	        _react2.default.createElement(
 	          _reactTabs.TabPanel,
 	          null,
-	          _react2.default.createElement(_output2.default, { result: this.state.result.data })
-	        ),
-	        _react2.default.createElement(
-	          _reactTabs.TabPanel,
-	          null,
-	          "Hi 2"
+	          _react2.default.createElement(_output_body2.default, { result: this.state.result.data })
 	        ),
 	        _react2.default.createElement(
 	          _reactTabs.TabPanel,
@@ -41107,7 +41031,7 @@
 	exports.default = OutputTabs;
 
 /***/ },
-/* 429 */
+/* 428 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -41117,19 +41041,19 @@
 	});
 	exports.TabPanel = exports.Tab = exports.TabList = exports.Tabs = undefined;
 
-	var _Tabs = __webpack_require__(430);
+	var _Tabs = __webpack_require__(429);
 
 	var _Tabs2 = _interopRequireDefault(_Tabs);
 
-	var _TabList = __webpack_require__(435);
+	var _TabList = __webpack_require__(434);
 
 	var _TabList2 = _interopRequireDefault(_TabList);
 
-	var _Tab = __webpack_require__(434);
+	var _Tab = __webpack_require__(433);
 
 	var _Tab2 = _interopRequireDefault(_Tab);
 
-	var _TabPanel = __webpack_require__(437);
+	var _TabPanel = __webpack_require__(436);
 
 	var _TabPanel2 = _interopRequireDefault(_TabPanel);
 
@@ -41150,7 +41074,7 @@
 	};
 
 /***/ },
-/* 430 */
+/* 429 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -41167,19 +41091,19 @@
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
-	var _jsStylesheet = __webpack_require__(431);
+	var _jsStylesheet = __webpack_require__(430);
 
 	var _jsStylesheet2 = _interopRequireDefault(_jsStylesheet);
 
-	var _uuid = __webpack_require__(432);
+	var _uuid = __webpack_require__(431);
 
 	var _uuid2 = _interopRequireDefault(_uuid);
 
-	var _childrenPropType = __webpack_require__(433);
+	var _childrenPropType = __webpack_require__(432);
 
 	var _childrenPropType2 = _interopRequireDefault(_childrenPropType);
 
-	var _Tab = __webpack_require__(434);
+	var _Tab = __webpack_require__(433);
 
 	var _Tab2 = _interopRequireDefault(_Tab);
 
@@ -41238,7 +41162,7 @@
 	  },
 	  componentDidMount: function componentDidMount() {
 	    if (useDefaultStyles) {
-	      (0, _jsStylesheet2.default)(__webpack_require__(436)); // eslint-disable-line global-require
+	      (0, _jsStylesheet2.default)(__webpack_require__(435)); // eslint-disable-line global-require
 	    }
 	  },
 	  componentWillReceiveProps: function componentWillReceiveProps(newProps) {
@@ -41560,7 +41484,7 @@
 	});
 
 /***/ },
-/* 431 */
+/* 430 */
 /***/ function(module, exports, __webpack_require__) {
 
 	!(function() {
@@ -41604,7 +41528,7 @@
 
 
 /***/ },
-/* 432 */
+/* 431 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -41616,7 +41540,7 @@
 	};
 
 /***/ },
-/* 433 */
+/* 432 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -41625,11 +41549,11 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Tab = __webpack_require__(434);
+	var _Tab = __webpack_require__(433);
 
 	var _Tab2 = _interopRequireDefault(_Tab);
 
-	var _TabList = __webpack_require__(435);
+	var _TabList = __webpack_require__(434);
 
 	var _TabList2 = _interopRequireDefault(_TabList);
 
@@ -41675,7 +41599,7 @@
 	};
 
 /***/ },
-/* 434 */
+/* 433 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -41768,7 +41692,7 @@
 	});
 
 /***/ },
-/* 435 */
+/* 434 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -41783,7 +41707,7 @@
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
-	var _Tab = __webpack_require__(434);
+	var _Tab = __webpack_require__(433);
 
 	var _Tab2 = _interopRequireDefault(_Tab);
 
@@ -41840,7 +41764,7 @@
 	});
 
 /***/ },
-/* 436 */
+/* 435 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -41895,7 +41819,7 @@
 	};
 
 /***/ },
-/* 437 */
+/* 436 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -41963,6 +41887,107 @@
 	    );
 	  }
 	});
+
+/***/ },
+/* 437 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactTabs = __webpack_require__(428);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var OutputBody = function (_Component) {
+	  _inherits(OutputBody, _Component);
+
+	  function OutputBody(props) {
+	    _classCallCheck(this, OutputBody);
+
+	    var _this = _possibleConstructorReturn(this, (OutputBody.__proto__ || Object.getPrototypeOf(OutputBody)).call(this, props));
+
+	    _this.state = { result: _this.props.result };
+	    return _this;
+	  }
+
+	  _createClass(OutputBody, [{
+	    key: 'componentWillReceiveProps',
+	    value: function componentWillReceiveProps(nextProps) {
+	      this.setState({ result: nextProps.result });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var style = {
+	        fontSize: 13,
+	        workBreak: 'break-all',
+	        overflow: 'scroll'
+	      };
+	      return _react2.default.createElement(
+	        'div',
+	        { id: 'output', style: style },
+	        _react2.default.createElement(
+	          _reactTabs.Tabs,
+	          null,
+	          _react2.default.createElement(
+	            _reactTabs.TabList,
+	            null,
+	            _react2.default.createElement(
+	              _reactTabs.Tab,
+	              null,
+	              'Raw'
+	            ),
+	            _react2.default.createElement(
+	              _reactTabs.Tab,
+	              null,
+	              'Pretty'
+	            ),
+	            _react2.default.createElement(
+	              _reactTabs.Tab,
+	              null,
+	              'Preview'
+	            )
+	          ),
+	          _react2.default.createElement(
+	            _reactTabs.TabPanel,
+	            null,
+	            this.state.result
+	          ),
+	          _react2.default.createElement(
+	            _reactTabs.TabPanel,
+	            null,
+	            'Ho'
+	          ),
+	          _react2.default.createElement(
+	            _reactTabs.TabPanel,
+	            null,
+	            _react2.default.createElement('div', { dangerouslySetInnerHTML: { __html: this.state.result } })
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return OutputBody;
+	}(_react.Component);
+
+	exports.default = OutputBody;
 
 /***/ },
 /* 438 */
