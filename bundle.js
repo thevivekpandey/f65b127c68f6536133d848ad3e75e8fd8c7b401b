@@ -41935,9 +41935,10 @@
 	    key: 'render',
 	    value: function render() {
 	      var style = {
-	        fontSize: 13,
+	        fontSize: 15,
 	        workBreak: 'break-all',
-	        overflow: 'scroll'
+	        overflow: 'scroll',
+	        fontFamily: 'Inconsolata, monospace'
 	      };
 	      return _react2.default.createElement(
 	        'div',
@@ -41972,7 +41973,7 @@
 	          _react2.default.createElement(
 	            _reactTabs.TabPanel,
 	            null,
-	            'Ho'
+	            this.state.result ? html_beautify(this.state.result) : this.state.result
 	          ),
 	          _react2.default.createElement(
 	            _reactTabs.TabPanel,

@@ -13,9 +13,10 @@ class OutputBody extends Component {
 
   render() {
     var style = {
-      fontSize: 13,
+      fontSize: 15,
       workBreak: 'break-all',
-      overflow: 'scroll'
+      overflow: 'scroll',
+      fontFamily: 'Inconsolata, monospace'
     };
     return (
       <div id = "output" style={style}>
@@ -29,7 +30,7 @@ class OutputBody extends Component {
             {this.state.result}
           </TabPanel>
           <TabPanel>
-            Ho
+            {this.state.result ? html_beautify(this.state.result): this.state.result}
           </TabPanel>
           <TabPanel>
             <div dangerouslySetInnerHTML={{__html: this.state.result}} />
