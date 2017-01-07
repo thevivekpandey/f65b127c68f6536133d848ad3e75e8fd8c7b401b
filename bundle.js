@@ -40963,6 +40963,10 @@
 
 	var _output_headers2 = _interopRequireDefault(_output_headers);
 
+	var _status = __webpack_require__(439);
+
+	var _status2 = _interopRequireDefault(_status);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -40995,31 +40999,36 @@
 	        backgroundColor: 'yellow'
 	      };
 	      return _react2.default.createElement(
-	        _reactTabs.Tabs,
+	        "div",
 	        null,
+	        _react2.default.createElement(_status2.default, { status: this.state.result.status }),
 	        _react2.default.createElement(
-	          _reactTabs.TabList,
+	          _reactTabs.Tabs,
 	          null,
 	          _react2.default.createElement(
-	            _reactTabs.Tab,
+	            _reactTabs.TabList,
 	            null,
-	            " Body "
+	            _react2.default.createElement(
+	              _reactTabs.Tab,
+	              null,
+	              " Body "
+	            ),
+	            _react2.default.createElement(
+	              _reactTabs.Tab,
+	              null,
+	              " Headers "
+	            )
 	          ),
 	          _react2.default.createElement(
-	            _reactTabs.Tab,
+	            _reactTabs.TabPanel,
 	            null,
-	            " Headers "
+	            _react2.default.createElement(_output_body2.default, { result: this.state.result.data })
+	          ),
+	          _react2.default.createElement(
+	            _reactTabs.TabPanel,
+	            null,
+	            _react2.default.createElement(_output_headers2.default, { result: this.state.result.headers })
 	          )
-	        ),
-	        _react2.default.createElement(
-	          _reactTabs.TabPanel,
-	          null,
-	          _react2.default.createElement(_output_body2.default, { result: this.state.result.data })
-	        ),
-	        _react2.default.createElement(
-	          _reactTabs.TabPanel,
-	          null,
-	          _react2.default.createElement(_output_headers2.default, { result: this.state.result.headers })
 	        )
 	      );
 	    }
@@ -41892,7 +41901,7 @@
 /* 437 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -41927,22 +41936,27 @@
 	  }
 
 	  _createClass(OutputBody, [{
-	    key: 'componentWillReceiveProps',
+	    key: "componentWillReceiveProps",
 	    value: function componentWillReceiveProps(nextProps) {
 	      this.setState({ result: nextProps.result });
 	    }
 	  }, {
-	    key: 'render',
+	    key: "render",
 	    value: function render() {
 	      var style = {
 	        fontSize: 15,
-	        workBreak: 'break-all',
-	        overflow: 'scroll',
-	        fontFamily: 'Inconsolata, monospace'
+	        workBreak: "break-all",
+	        overflow: "scroll",
+	        fontFamily: "Inconsolata, monospace"
 	      };
+	      var textAreaStyle = {
+	        width: "100%",
+	        height: 700 /* Same as the height of #output */
+	      };
+	      var preview = this.state.result ? html_beautify(this.state.result, {}) : this.state.result;
 	      return _react2.default.createElement(
-	        'div',
-	        { id: 'output', style: style },
+	        "div",
+	        { id: "output", style: style },
 	        _react2.default.createElement(
 	          _reactTabs.Tabs,
 	          null,
@@ -41952,17 +41966,17 @@
 	            _react2.default.createElement(
 	              _reactTabs.Tab,
 	              null,
-	              'Raw'
+	              "Raw"
 	            ),
 	            _react2.default.createElement(
 	              _reactTabs.Tab,
 	              null,
-	              'Pretty'
+	              "Pretty"
 	            ),
 	            _react2.default.createElement(
 	              _reactTabs.Tab,
 	              null,
-	              'Preview'
+	              "Preview"
 	            )
 	          ),
 	          _react2.default.createElement(
@@ -41973,12 +41987,12 @@
 	          _react2.default.createElement(
 	            _reactTabs.TabPanel,
 	            null,
-	            this.state.result ? html_beautify(this.state.result) : this.state.result
+	            _react2.default.createElement("textarea", { style: textAreaStyle, defaultValue: preview })
 	          ),
 	          _react2.default.createElement(
 	            _reactTabs.TabPanel,
 	            null,
-	            _react2.default.createElement('div', { dangerouslySetInnerHTML: { __html: this.state.result } })
+	            _react2.default.createElement("div", { dangerouslySetInnerHTML: { __html: this.state.result } })
 	          )
 	        )
 	      );
@@ -42082,6 +42096,66 @@
 	}(_react.Component);
 
 	exports.default = OutputHeaders;
+
+/***/ },
+/* 439 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	        value: true
+	});
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var Status = function Status(_ref) {
+	        var status = _ref.status;
+
+	        var style = { float: "right",
+	                borderRadius: 5,
+	                color: "white",
+	                fontSize: 23,
+	                padding: 5
+	        };
+
+	        var color = "";
+	        switch (Math.floor(parseInt(status) / 100)) {
+	                case 0:
+	                case 1:
+	                        color = "gray";
+	                        break;
+	                case 2:
+	                        color = "green";
+	                        break;
+	                case 3:
+	                        color = "orange";
+	                        break;
+	                case 4:
+	                        color = "orange";
+	                        break;
+	                case 5:
+	                        color = "red";
+	                        break;
+	                default:
+	                        color = "gray";
+	        }
+	        style.backgroundColor = color;
+
+	        var displayStatus = typeof status === "undefined" ? "none" : "block";
+	        style.display = displayStatus;
+	        return _react2.default.createElement(
+	                "div",
+	                { style: style },
+	                status
+	        );
+	};
+
+	exports.default = Status;
 
 /***/ }
 /******/ ]);
