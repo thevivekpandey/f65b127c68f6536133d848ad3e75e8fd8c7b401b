@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import OutputBody from "./output_body";
 import OutputHeaders from "./output_headers";
+import Status from "./status";
 
 class OutputTabs extends Component {
   constructor(props) {
@@ -18,18 +19,21 @@ class OutputTabs extends Component {
       backgroundColor: 'yellow',
     };
     return (
-      <Tabs>
-        <TabList>
-          <Tab> Body </Tab>
-          <Tab> Headers </Tab>
-        </TabList>
-        <TabPanel>
-          <OutputBody result={this.state.result.data}/>
-        </TabPanel>
-        <TabPanel>
-          <OutputHeaders result={this.state.result.headers}/>
-        </TabPanel>
-      </Tabs>
+      <div>
+        <Status status={this.state.result.status}/>
+        <Tabs>
+          <TabList>
+            <Tab> Body </Tab>
+            <Tab> Headers </Tab>
+          </TabList>
+          <TabPanel>
+            <OutputBody result={this.state.result.data}/>
+          </TabPanel>
+          <TabPanel>
+            <OutputHeaders result={this.state.result.headers}/>
+          </TabPanel>
+        </Tabs>
+      </div>
     );
   }
 }

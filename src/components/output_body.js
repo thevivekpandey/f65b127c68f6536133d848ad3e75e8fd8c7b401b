@@ -12,12 +12,19 @@ class OutputBody extends Component {
   }
 
   render() {
-    var style = {
+    const style = {
       fontSize: 15,
-      workBreak: 'break-all',
-      overflow: 'scroll',
-      fontFamily: 'Inconsolata, monospace'
+      workBreak: "break-all",
+      overflow: "scroll",
+      fontFamily: "Inconsolata, monospace"
     };
+    const textAreaStyle = {
+      width: "100%",
+      height: 700 /* Same as the height of #output */
+    };
+    var preview = this.state.result ? 
+                  html_beautify(this.state.result, {}): 
+                  this.state.result
     return (
       <div id = "output" style={style}>
         <Tabs>
@@ -30,7 +37,7 @@ class OutputBody extends Component {
             {this.state.result}
           </TabPanel>
           <TabPanel>
-            {this.state.result ? html_beautify(this.state.result): this.state.result}
+            <textarea style={textAreaStyle} defaultValue={preview} />
           </TabPanel>
           <TabPanel>
             <div dangerouslySetInnerHTML={{__html: this.state.result}} />

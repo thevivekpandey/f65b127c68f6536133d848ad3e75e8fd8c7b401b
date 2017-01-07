@@ -12,8 +12,8 @@ import Button from "./components/button";
 import Headers from "./components/headers";
 import OutputTabs from "./components/output_tabs";
 
-const SERVER_BASE_URL = "http://www.f65b127c68f6536133d848ad3e75e8fd8c7b401b.run/run"
-//const SERVER_BASE_URL = "http://127.0.0.1:8000/run"
+//const SERVER_BASE_URL = "http://www.f65b127c68f6536133d848ad3e75e8fd8c7b401b.run/run"
+const SERVER_BASE_URL = "http://127.0.0.1:8000/run"
 class App extends Component {
   constructor(props) {
     super(props);
@@ -31,7 +31,7 @@ class App extends Component {
     console.log(this.state.method);
     if (headers.headerskey == "|||") {
       axios({
-       url: SERVER_BASE_URL + "?url=" + url + "&method=" + method
+        url: SERVER_BASE_URL + "?url=" + url + "&method=" + method
       }).then(function(response) {
         self.setState({result: response.data})
       }).catch(function(error) {
