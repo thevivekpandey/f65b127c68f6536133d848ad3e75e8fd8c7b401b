@@ -3,6 +3,7 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import OutputBody from "./output_body";
 import OutputHeaders from "./output_headers";
 import Status from "./status";
+import Time from "./time";
 
 class OutputTabs extends Component {
   constructor(props) {
@@ -12,15 +13,19 @@ class OutputTabs extends Component {
 
   componentWillReceiveProps(nextProps) {
     this.setState({result: nextProps.result});
+    console.log(this.state.result);
   }
 
   render() {
     var style = {
       backgroundColor: 'yellow',
     };
+    console.log("See interval");
+    console.log(this.state.result);
     return (
       <div>
         <Status status={this.state.result.status}/>
+        <Time time={this.state.result.interval}/>
         <Tabs>
           <TabList>
             <Tab> Body </Tab>
