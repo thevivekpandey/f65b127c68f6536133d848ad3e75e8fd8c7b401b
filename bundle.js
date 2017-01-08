@@ -40967,6 +40967,10 @@
 
 	var _status2 = _interopRequireDefault(_status);
 
+	var _time = __webpack_require__(440);
+
+	var _time2 = _interopRequireDefault(_time);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -40991,6 +40995,7 @@
 	    key: "componentWillReceiveProps",
 	    value: function componentWillReceiveProps(nextProps) {
 	      this.setState({ result: nextProps.result });
+	      console.log(this.state.result);
 	    }
 	  }, {
 	    key: "render",
@@ -40998,10 +41003,13 @@
 	      var style = {
 	        backgroundColor: 'yellow'
 	      };
+	      console.log("See interval");
+	      console.log(this.state.result);
 	      return _react2.default.createElement(
 	        "div",
 	        null,
 	        _react2.default.createElement(_status2.default, { status: this.state.result.status }),
+	        _react2.default.createElement(_time2.default, { time: this.state.result.interval }),
 	        _react2.default.createElement(
 	          _reactTabs.Tabs,
 	          null,
@@ -42156,6 +42164,45 @@
 	};
 
 	exports.default = Status;
+
+/***/ },
+/* 440 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var Time = function Time(_ref) {
+	  var time = _ref.time;
+
+	  var style = { float: "right",
+	    borderRadius: 5,
+	    fontSize: 15,
+	    padding: 5,
+	    backgroundColor: "white",
+	    height: 40
+	  };
+	  var displayStatus = typeof time === "undefined" ? "none" : "block";
+	  style.display = displayStatus;
+
+	  return _react2.default.createElement(
+	    "div",
+	    { style: style },
+	    time,
+	    "ms"
+	  );
+	};
+
+	exports.default = Time;
 
 /***/ }
 /******/ ]);
