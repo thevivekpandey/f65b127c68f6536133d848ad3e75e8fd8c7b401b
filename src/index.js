@@ -11,9 +11,10 @@ import Methods from "./components/dropdown";
 import Button from "./components/button";
 import Headers from "./components/headers";
 import OutputTabs from "./components/output_tabs";
+import InputTabs from "./components/input_tabs";
 
-const SERVER_BASE_URL = "http://www.f65b127c68f6536133d848ad3e75e8fd8c7b401b.run/run"
-//const SERVER_BASE_URL = "http://127.0.0.1:8000/run"
+//const SERVER_BASE_URL = "http://www.f65b127c68f6536133d848ad3e75e8fd8c7b401b.run/run"
+const SERVER_BASE_URL = "http://127.0.0.1:8000/run"
 class App extends Component {
   constructor(props) {
     super(props);
@@ -76,6 +77,7 @@ class App extends Component {
           </div>
           <Headers onKeyChange={key => this.onKeyChange(key)}
                    onValChange={val => this.onValChange(val)} />
+          <InputTabs result={this.state.result}/>
           <OutputTabs result={this.state.result}/>
         </div>
       </MuiThemeProvider>
