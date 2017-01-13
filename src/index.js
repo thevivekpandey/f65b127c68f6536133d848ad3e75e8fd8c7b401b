@@ -9,9 +9,8 @@ import axios from "axios";
 import Url from "./components/url";
 import Methods from "./components/dropdown";
 import Button from "./components/button";
-import Headers from "./components/headers";
-import OutputTabs from "./components/output_tabs";
-import InputTabs from "./components/input_tabs";
+import Output from "./components/output";
+import Input from "./components/input";
 
 //const SERVER_BASE_URL = "http://www.f65b127c68f6536133d848ad3e75e8fd8c7b401b.run/run"
 const SERVER_BASE_URL = "http://127.0.0.1:8000/run"
@@ -75,10 +74,8 @@ class App extends Component {
             <Url onUrlChange={url => this.onUrlChange(url)} />
             <Button doRequest={() =>this.doRequest()} />
           </div>
-          <Headers onKeyChange={key => this.onKeyChange(key)}
-                   onValChange={val => this.onValChange(val)} />
-          <InputTabs result={this.state.result}/>
-          <OutputTabs result={this.state.result}/>
+          <Input result={this.state.result}/>
+          <Output result={this.state.result}/>
         </div>
       </MuiThemeProvider>
     );
