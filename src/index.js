@@ -17,7 +17,9 @@ const SERVER_BASE_URL = "http://127.0.0.1:8000/run"
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {url: "", result: "", key: "", val: "", method: "GET"};
+    //this.state = {url: "", result: "", key: "", val: "", method: "GET"};
+    var headers = [{"key": 1, "left": "", "right": ""}];
+    this.state = {url: "", result: "", headers: headers, method: "GET"}
   }
 
   doRequest() {
@@ -50,10 +52,17 @@ class App extends Component {
   onUrlChange(url) {
     this.setState({url});
   }
-  onKeyChange(key) {
-    this.setState({key})
+  onKeyFocus(idx) {
+    console.log('change key')
+    if (idx == this.state.headers.length) {
+      var headers = this.state.headers;
+      headers.push({key: idx + 1, left: "", right: ""})
+      this.setState({headers})
+    }
   }
-  onValChange(val) {
+  onKeyChange(idx, left) {
+  }
+  onValChange(idx, val) {
     this.setState({val})
   }
   onMethodChange(method) {
@@ -74,7 +83,9 @@ class App extends Component {
             <Url onUrlChange={url => this.onUrlChange(url)} />
             <Button doRequest={() =>this.doRequest()} />
           </div>
-          <Input result={this.state.result}/>
+          <Input headers = {this.state.headers}
+                 onKeyFocus={key => this.onKeyFocus(key)}
+                 onKeyChange={val => this.onKeyChange(val)}/>
           <Output result={this.state.result}/>
         </div>
       </MuiThemeProvider>
