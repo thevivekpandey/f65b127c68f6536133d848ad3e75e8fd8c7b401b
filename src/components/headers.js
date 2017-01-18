@@ -17,6 +17,9 @@ class Headers extends Component {
   onValChange(event) {
     this.props.onValChange(event.target.value);
   }
+  onCrossButtonClick(key) {
+    this.props.onCrossButtonClick(key);
+  }
 
   render() {
     var header_style = {
@@ -36,7 +39,9 @@ class Headers extends Component {
                      hintText="value" 
                      value={header.right}
                      style={header_style} />
-          <button type="button" className="btn btn-default btn-sm">
+          <button onClick={() => this.onCrossButtonClick(header.key)}
+                  type="button" 
+                  className="btn btn-default btn-sm">
             <span className="glyphicon glyphicon-remove" aria-hiden="true"/>
           </button>
         </div>

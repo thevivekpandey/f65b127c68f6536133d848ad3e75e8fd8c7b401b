@@ -18,7 +18,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     //this.state = {url: "", result: "", key: "", val: "", method: "GET"};
-    var headers = [{"key": 1, "left": "", "right": ""}];
+    var headers = [{"key": 0, "left": "", "right": ""}];
     this.state = {url: "", result: "", headers: headers, method: "GET"}
   }
 
@@ -53,12 +53,21 @@ class App extends Component {
     this.setState({url});
   }
   onKeyFocus(idx) {
-    console.log('change key')
-    if (idx == this.state.headers.length) {
+    if (idx == this.state.headers.length - 1) {
       var headers = this.state.headers;
-      headers.push({key: idx + 1, left: "", right: ""})
-      this.setState({headers})
+      headers.push({key: idx + 1, left: "", right: ""});
+      this.setState({headers});
     }
+  }
+  onCrossButtonClick(idx) {
+    console.log("See " + idx);
+    var headers = this.state.headers;
+    headers.splice(idx, 1);
+    headers.map((header, index) => {
+      header.key = index;
+      return header;
+    });
+    this.setState({headers});
   }
   onKeyChange(idx, left) {
   }
@@ -84,6 +93,7 @@ class App extends Component {
             <Button doRequest={() =>this.doRequest()} />
           </div>
           <Input headers = {this.state.headers}
+                 onCrossButtonClick={(key) => this.onCrossButtonClick(key)}
                  onKeyFocus={key => this.onKeyFocus(key)}
                  onKeyChange={val => this.onKeyChange(val)}/>
           <Output result={this.state.result}/>

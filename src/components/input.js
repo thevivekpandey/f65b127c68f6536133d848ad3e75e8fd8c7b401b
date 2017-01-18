@@ -17,6 +17,7 @@ class Input extends Component {
           </TabList>
           <TabPanel>
             <Headers headers = {this.props.headers}
+                     onCrossButtonClick={(key) => this.props.onCrossButtonClick(key)}
                      onKeyFocus={key => this.props.onKeyFocus(key)}
                      onKeyChange={key => this.props.onKeyChange(key)}
                      onValChange={val => this.onValChange(val)} />
