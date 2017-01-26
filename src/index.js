@@ -12,14 +12,14 @@ import Button from "./components/button";
 import Output from "./components/output";
 import Input from "./components/input";
 
-//const SERVER_BASE_URL = "http://www.f65b127c68f6536133d848ad3e75e8fd8c7b401b.run/run"
-const SERVER_BASE_URL = "http://127.0.0.1:8000/run"
+//const SERVER_BASE_URL = "http://www.f65b127c68f6536133d848ad3e75e8fd8c7b401b.run/run";
+const SERVER_BASE_URL = "http://127.0.0.1:8000/run";
 class App extends Component {
   constructor(props) {
     super(props);
     //this.state = {url: "", result: "", key: "", val: "", method: "GET"};
     var headers = [{"key": 0, "left": "", "right": ""}];
-    this.state = {url: "", result: "", headers: headers, method: "GET"}
+    this.state = {url: "", result: "", headers: headers, method: "GET"};
   }
 
   doRequest() {
@@ -35,17 +35,17 @@ class App extends Component {
       axios({
         url: SERVER_BASE_URL + "?url=" + url + "&method=" + method
       }).then(function(response) {
-        self.setState({result: response.data})
+        self.setState({result: response.data});
       }).catch(function(error) {
-      })
+      });
     } else {
       axios({
        url: SERVER_BASE_URL + "?url=" + url + "&method=" + method,
        headers: headers
       }).then(function(response) {
-        self.setState({result: JSON.stringify(response.data)})
+        self.setState({result: JSON.stringify(response.data)});
       }).catch(function(error) {
-      })
+      });
     }
   }
 
@@ -67,7 +67,7 @@ class App extends Component {
   onRightChange(idx, right) {
     var headers = this.state.headers;
     headers[idx].right = right;
-    this.setState({headers})
+    this.setState({headers});
   }
   onCrossButtonClick(idx) {
     var headers = this.state.headers;
@@ -101,7 +101,7 @@ class App extends Component {
         <div style={{marginTop: 30}}>
           <div className="first_line">
             <div style={style}>
-              <Methods onMethodChange={method => this.onMethodChange(method)}/>
+              <Methods onMethodChange={method => this.onMethodChange(method)} />
             </div>
             <Url onUrlChange={url => this.onUrlChange(url)} />
             <Button doRequest={() =>this.doRequest()} />
