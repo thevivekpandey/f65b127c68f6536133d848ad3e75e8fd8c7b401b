@@ -7,15 +7,11 @@ class Headers extends Component {
     this.state = {key:"", val:""};
   }
 
-  onKeyFocus(key) {
-    this.props.onKeyFocus(key);
+  onLeftFocus(key) {
+    this.props.onLeftFocus(key);
   }
-  onKeyChange(key, event) {
-    console.log("headers onKeyChange");
-    this.props.onKeyChange(key, event.target.value);
-  }
-  onValChange(event) {
-    this.props.onValChange(event.target.value);
+  onRightChange(key, event) {
+    this.props.onRightChange(key, event.target.value);
   }
   onCrossButtonClick(key) {
     this.props.onCrossButtonClick(key);
@@ -23,19 +19,19 @@ class Headers extends Component {
 
   render() {
     var header_style = {
-      width: '40%',
+      width: "40%",
       marginRight: 40,
       marginBottom: 20
     };
     var rowList = this.props.headers.map((header) => {
       return (
         <div key={header.key}>
-          <TextField onChange={event=>this.onKeyChange(header.key, event)}
+          <TextField onChange={event=>this.props.onLeftChange(header.key, event.target.value)}
                      hintText="key" 
-                     onFocus={event=>this.onKeyFocus(header.key)}
+                     onFocus={event=>this.props.onLeftFocus(header.key)}
                      value={header.left}
                      style={header_style} />
-          <TextField onChange={event=>this.onValChange(event)}
+          <TextField onChange={event=>this.props.onRightChange(header.key, event.target.value)}
                      hintText="value" 
                      value={header.right}
                      style={header_style} />

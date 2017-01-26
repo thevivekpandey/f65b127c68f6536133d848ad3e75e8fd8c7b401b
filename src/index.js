@@ -52,27 +52,41 @@ class App extends Component {
   onUrlChange(url) {
     this.setState({url});
   }
-  onKeyFocus(idx) {
+  onLeftFocus(idx) {
     if (idx == this.state.headers.length - 1) {
       var headers = this.state.headers;
       headers.push({key: idx + 1, left: "", right: ""});
       this.setState({headers});
     }
   }
-  onCrossButtonClick(idx) {
-    console.log("See " + idx);
+  onLeftChange(idx, left) {
     var headers = this.state.headers;
+    headers[idx].left = left;
+    this.setState({headers});
+  }
+  onRightChange(idx, right) {
+    var headers = this.state.headers;
+    headers[idx].right = right;
+    this.setState({headers})
+  }
+  onCrossButtonClick(idx) {
+    var headers = this.state.headers;
+    if (headers.length == 1) {
+      /* We do not find to get rid of header if there is only one remaining.
+         We will just reset the key/value pair in this header. */
+      headers[0].left = "";
+      headers[0].right = "";
+      this.setState({headers});
+      return;
+    }
     headers.splice(idx, 1);
     headers.map((header, index) => {
       header.key = index;
       return header;
     });
     this.setState({headers});
-  }
-  onKeyChange(idx, left) {
-  }
-  onValChange(idx, val) {
-    this.setState({val})
+    console.log("after");
+    console.log(this.state.headers);
   }
   onMethodChange(method) {
     this.setState({method});
@@ -94,8 +108,9 @@ class App extends Component {
           </div>
           <Input headers = {this.state.headers}
                  onCrossButtonClick={(key) => this.onCrossButtonClick(key)}
-                 onKeyFocus={key => this.onKeyFocus(key)}
-                 onKeyChange={val => this.onKeyChange(val)}/>
+                 onLeftFocus={key => this.onLeftFocus(key)}
+                 onLeftChange={(key, left) => this.onLeftChange(key, left)}
+                 onRightChange={(key, right) => this.onRightChange(key, right)} />
           <Output result={this.state.result}/>
         </div>
       </MuiThemeProvider>
