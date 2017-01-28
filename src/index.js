@@ -17,7 +17,6 @@ const SERVER_BASE_URL = "http://127.0.0.1:8000/run";
 class App extends Component {
   constructor(props) {
     super(props);
-    //this.state = {url: "", result: "", key: "", val: "", method: "GET"};
     var headers = [{"key": 0, "left": "", "right": ""}];
     this.state = {url: "", result: "", headers: headers, method: "GET"};
   }
@@ -27,25 +26,35 @@ class App extends Component {
     var url = this.state.url;
     var key = this.state.key;
     var val = this.state.val;
-    var headers = {'headerskey': key + "|||" + val};
+    var joinedHeaders = [];
+    this.state.headers.forEach(function(header) {
+      if (header.left !== "" && header.right !== "") {
+        joinedHeaders.push(header.left + "QQQ" + header.right);
+      }
+    });
+    var concatHeaders = joinedHeaders.join("|||");
+    console.log("see header");
+    console.log(concatHeaders);
     var method = this.state.method;
-    console.log("see method");
-    console.log(this.state.method);
-    if (headers.headerskey == "|||") {
+    if (concatHeaders == "") {
+      console.log("without header");
       axios({
         url: SERVER_BASE_URL + "?url=" + url + "&method=" + method
       }).then(function(response) {
         self.setState({result: response.data});
       }).catch(function(error) {
       });
+      console.log("Done");
     } else {
+      console.log("with header");
       axios({
        url: SERVER_BASE_URL + "?url=" + url + "&method=" + method,
-       headers: headers
+       headers: concatHeaders
       }).then(function(response) {
         self.setState({result: JSON.stringify(response.data)});
       }).catch(function(error) {
       });
+      console.log("Done");
     }
   }
 
