@@ -29,10 +29,10 @@ class App extends Component {
     var joinedHeaders = [];
     this.state.headers.forEach(function(header) {
       if (header.left !== "" && header.right !== "") {
-        joinedHeaders.push(header.left + "QQQ" + header.right);
+        joinedHeaders.push(header.left + "|||" + header.right);
       }
     });
-    var concatHeaders = joinedHeaders.join("|||");
+    var concatHeaders = joinedHeaders.join("QQQ");
     console.log("see header");
     console.log(concatHeaders);
     var method = this.state.method;
@@ -49,7 +49,7 @@ class App extends Component {
       console.log("with header");
       axios({
        url: SERVER_BASE_URL + "?url=" + url + "&method=" + method,
-       headers: concatHeaders
+       headers: {headerskey: concatHeaders}
       }).then(function(response) {
         self.setState({result: JSON.stringify(response.data)});
       }).catch(function(error) {
