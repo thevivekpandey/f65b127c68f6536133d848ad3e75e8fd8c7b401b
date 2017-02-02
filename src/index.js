@@ -33,28 +33,22 @@ class App extends Component {
       }
     });
     var concatHeaders = joinedHeaders.join("QQQ");
-    console.log("see header");
-    console.log(concatHeaders);
     var method = this.state.method;
     if (concatHeaders == "") {
-      console.log("without header");
       axios({
         url: SERVER_BASE_URL + "?url=" + url + "&method=" + method
       }).then(function(response) {
         self.setState({result: response.data});
       }).catch(function(error) {
       });
-      console.log("Done");
     } else {
-      console.log("with header");
       axios({
        url: SERVER_BASE_URL + "?url=" + url + "&method=" + method,
        headers: {headerskey: concatHeaders}
       }).then(function(response) {
-        self.setState({result: JSON.stringify(response.data)});
+        self.setState({result: response.data});
       }).catch(function(error) {
       });
-      console.log("Done");
     }
   }
 
@@ -94,8 +88,6 @@ class App extends Component {
       return header;
     });
     this.setState({headers});
-    console.log("after");
-    console.log(this.state.headers);
   }
   onMethodChange(method) {
     this.setState({method});
