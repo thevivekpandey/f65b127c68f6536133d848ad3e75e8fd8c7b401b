@@ -18,7 +18,10 @@ class App extends Component {
   constructor(props) {
     super(props);
     var headers = [{"key": 0, "left": "", "right": ""}];
-    this.state = {url: "", result: "", headers: headers, method: "GET"};
+    this.state = {url: "", result: "", 
+                  headers: headers, method: "GET",
+                  requestBody: ""
+                  };
   }
 
   doRequest() {
@@ -26,6 +29,8 @@ class App extends Component {
     var url = this.state.url;
     var key = this.state.key;
     var val = this.state.val;
+    console.log("See request body");
+    console.log(this.state.requestBody);
     var joinedHeaders = [];
     this.state.headers.forEach(function(header) {
       if (header.left !== "" && header.right !== "") {
@@ -92,6 +97,10 @@ class App extends Component {
   onMethodChange(method) {
     this.setState({method});
   }
+  onPostBodyChange(requestBody) {
+    this.setState({requestBody});
+  }
+
   render() {
     const style = {
       width: '100px',
@@ -111,7 +120,8 @@ class App extends Component {
                  onCrossButtonClick={(key) => this.onCrossButtonClick(key)}
                  onLeftFocus={key => this.onLeftFocus(key)}
                  onLeftChange={(key, left) => this.onLeftChange(key, left)}
-                 onRightChange={(key, right) => this.onRightChange(key, right)} />
+                 onRightChange={(key, right) => this.onRightChange(key, right)} 
+                 onPostBodyChange={(value) => this.onPostBodyChange(value)}/>
           <Output result={this.state.result}/>
         </div>
       </MuiThemeProvider>

@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import Headers from "./headers";
+import RequestBody from "./request_body";
 
 class Input extends Component {
   constructor(props) {
@@ -8,6 +9,10 @@ class Input extends Component {
   }
 
   render() {
+    const textAreaStyle = {
+      width: "100%",
+      height: 500 /* Same as the height of #output */
+    };
     return (
       <div>
         <Tabs>
@@ -23,7 +28,7 @@ class Input extends Component {
                      onRightChange={(key, right) => this.props.onRightChange(key, right)} />
           </TabPanel>
           <TabPanel>
-             Input 2
+            <RequestBody onPostBodyChange={(value)=>this.props.onPostBodyChange(value)} />
           </TabPanel>
         </Tabs>
       </div>
