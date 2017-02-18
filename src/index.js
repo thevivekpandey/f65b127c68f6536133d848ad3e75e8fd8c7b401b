@@ -14,6 +14,7 @@ import Input from "./components/input";
 
 //const SERVER_BASE_URL = "http://www.f65b127c68f6536133d848ad3e75e8fd8c7b401b.run/run";
 const SERVER_BASE_URL = "http://127.0.0.1:8000/run";
+//const SERVER_BASE_URL = "http://requestb.in/rz2ayprz";
 class App extends Component {
   constructor(props) {
     super(props);
@@ -29,8 +30,7 @@ class App extends Component {
     var url = this.state.url;
     var key = this.state.key;
     var val = this.state.val;
-    console.log("See request body");
-    console.log(this.state.requestBody);
+    var body = this.state.requestBody;
     var joinedHeaders = [];
     this.state.headers.forEach(function(header) {
       if (header.left !== "" && header.right !== "") {
@@ -39,22 +39,21 @@ class App extends Component {
     });
     var concatHeaders = joinedHeaders.join("QQQ");
     var method = this.state.method;
-    if (concatHeaders == "") {
-      axios({
-        url: SERVER_BASE_URL + "?url=" + url + "&method=" + method
-      }).then(function(response) {
-        self.setState({result: response.data});
-      }).catch(function(error) {
-      });
-    } else {
-      axios({
-       url: SERVER_BASE_URL + "?url=" + url + "&method=" + method,
-       headers: {headerskey: concatHeaders}
-      }).then(function(response) {
-        self.setState({result: response.data});
-      }).catch(function(error) {
-      });
+    var request = {
+      url: SERVER_BASE_URL + "?url=" + url + "&method=" + method,
+
+      /* We use post request so that we can send request body if user request is post/put etc. */
+      method: "POST", 
+
+      data: body
     }
+    if (concatHeaders != "") {
+      request.headers = {headerskey: concatHeaders};
+    }
+    axios(request).then(function(response) {
+      self.setState({result: response.data});
+    }).catch(function(error) {
+    });
   }
 
   onUrlChange(url) {
